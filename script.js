@@ -562,7 +562,69 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Admin dashboard error:", err);
     }
   }
+// Add New Saree Listing
+  const newSareeForm = get("newSareeForm");
+  const sareeFileInput = get("sareeFileInput");
 
+  if (newSareeForm) {
+    newSareeForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = get("sareeName") ? get("sareeName").value.trim() : "";
+      const category = get("sareeCategory") ? get("sareeCategory").value : "Paithani";
+      const price = get("sareePrice") ? Number(get("sareePrice").value) : 0;
+      const originalPrice = get("sareeOrigPrice") ? Number(get("sareeOrigPrice").value) : price;
+      const description = get("sareeDesc") ? get("sareeDesc").value.trim() : "";
+      const trustBadge = get("sareeBadge") ? get("sareeBadge").value.trim() : "Silk Mark Certified";
+      const imageUrlInput = get("sareeImgUrl") ? get("sareeImgUrl").value.trim() : "";
+
+      let finalImageUrl = imageUrlInput;
+
+      // Handle file upload if user uploaded a file instead of URL
+      if (sareeFileInput && sareeFileInput.files && sareeFileInput.files[0]) {
+        const file = sareeFileInput.files[0];
+        finalImageUrl = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(file);
+        });
+      }
+
+      if (!finalImageUrl) {
+        alert("Please provide an image URL or choose a file for the saree.");
+        return;
+      }
+
+      const payload = {
+        name,
+        category,
+        price,
+        originalPrice,
+        description,
+        trustBadge,
+        image: finalImageUrl
+      };
+
+      try {
+        const res = await fetch('/api/sarees', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          alert("Saree listing added successfully!");
+          newSareeForm.reset();
+          await fetchSarees(); // Refetches and re-renders the grid immediately
+        } else {
+          alert("Failed to save saree listing.");
+        }
+      } catch (err) {
+        console.error("Listing error:", err);
+        alert("Server error while saving listing.");
+      }
+    });
+  }
   // Google Sheets-Ready CSV Exporter
   if (exportCsvBtn) {
     exportCsvBtn.addEventListener("click", async () => {
