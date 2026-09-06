@@ -1,0 +1,22 @@
+[
+  {
+    "id": "RM-99747",
+    "customerName": "KAILAS GIRJABA PAWAR",
+    "customerPhone": "9850664511",
+    "city": "sawangi",
+    "pincode": "423702",
+    "address": "sawangi",
+    "items": [
+      {
+        "id": 1,
+        "name": "Maharani Peacock Paithani",
+        "price": 8499,
+        "quantity": 1,
+        "category": "Paithani"
+      }
+    ],
+    "total": 8499,
+    "status": "Delivered",
+    "date": "6/9/2026"
+  }
+]
