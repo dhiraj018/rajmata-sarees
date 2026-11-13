@@ -3,329 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajmata Sarees | Royal Heritage Collection</title>
+  <title>Rajmata Sarees | Luxury Handloom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="top-bar">
-    Festive Handloom Special | Direct WhatsApp Support: +91 9322575059
-  </div>
-
-  <header class="header">
-    <div class="nav-container">
-      <a href="#" class="brand-logo">Rajmata <span>Sarees</span></a>
-      
-      <nav class="nav-links">
-        <a href="#collectionSection">Collection</a>
-        <a href="#trackingSection">📦 Track Delivery</a>
-        <a href="https://wa.me/919322575059" target="_blank" style="color: var(--whatsapp-green);">WhatsApp</a>
-      </nav>
-
-      <div class="nav-actions">
-        <button class="auth-btn" id="authModalOpenBtn">Sign In / Register</button>
-        
-        <div class="user-profile-badge" id="userBadge">
-          <span>👤 <span id="userNameLabel">User</span></span>
-          <button class="btn-logout" id="logoutBtn">Logout</button>
-        </div>
-
-        <button class="cart-trigger" id="cartOpenBtn">
-          <span>🛍️ Bag</span>
-          <span class="cart-badge" id="cartBadgeCount">0</span>
-        </button>
-      </div>
+  <header class="navbar">
+    <div class="logo">RAJMATA SAREES</div>
+    <div class="nav-actions">
+      <button id="accountBtn" class="nav-btn">Sign In</button>
+      <button id="bagBtn" class="nav-btn">Bag (0)</button>
     </div>
   </header>
 
-  <section class="hero">
-    <h1>Royal Heritage Sarees</h1>
-    <p>Handwoven Paithani, pure Kanjivaram silk, and Banarasi zari textiles direct to you.</p>
-  </section>
+  <main class="container">
+    <section class="hero">
+      <h1>Authentic Paithani & Handloom Aesthetics</h1>
+      <p>Direct WhatsApp automated checkout • Real-time dispatch hub</p>
+    </section>
 
-  <div class="trust-strip">
-    <div class="trust-item">
-      <div class="trust-icon">✨</div>
-      <div class="trust-text">
-        <h4>100% Authentic Silk</h4>
-        <p>Pure handwoven mulberry & katan fibers</p>
+    <div class="product-grid" id="productGrid">
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <div class="product-img-placeholder"></div>
+        <div class="product-info">
+          <h3>Royal Maroon Paithani</h3>
+          <p class="price">₹12,500</p>
+          <button class="btn-primary quick-order-btn" data-name="Royal Maroon Paithani" data-price="12500">Quick Order</button>
+        </div>
+      </div>
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <div class="product-img-placeholder" style="background-color: #C59B27;"></div>
+        <div class="product-info">
+          <h3>Antique Zari Silk</h3>
+          <p class="price">₹18,000</p>
+          <button class="btn-primary quick-order-btn" data-name="Antique Zari Silk" data-price="18000">Quick Order</button>
+        </div>
       </div>
     </div>
-    <div class="trust-item">
-      <div class="trust-icon">🚚</div>
-      <div class="trust-text">
-        <h4>Insured Express Delivery</h4>
-        <p>Doorstep shipping with tracking</p>
-      </div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-icon">🛡️</div>
-      <div class="trust-text">
-        <h4>Silk Mark Guaranteed</h4>
-        <p>Certified artisan craftsmanship</p>
-      </div>
-    </div>
-  </div>
-
-  <main class="collection-section" id="collectionSection">
-    <div class="section-header">
-      <h2 style="font-size: 2.2rem; color: var(--maroon-deep); text-align: center;">Curated Saree Collection</h2>
-      <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Handpicked handlooms with genuine zari and intricate pallu work.</p>
-    </div>
-
-    <div class="toolbar-container">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Search by name, fabric, or color...">
-      </div>
-      <div>
-        <select id="sortSelect" class="sort-select">
-          <option value="featured">Sort by: Featured</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
-          <option value="discount">Highest Discount %</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="filter-tabs" id="categoryTabs">
-      <button class="filter-btn active" data-cat="All">All Sarees</button>
-      <button class="filter-btn" data-cat="Paithani">Paithani</button>
-      <button class="filter-btn" data-cat="Banarasi">Banarasi</button>
-      <button class="filter-btn" data-cat="Kanjivaram">Kanjivaram</button>
-      <button class="filter-btn" data-cat="Chanderi">Chanderi</button>
-    </div>
-
-    <div class="product-grid" id="productGrid"></div>
   </main>
 
-  <section class="tracking-section" id="trackingSection">
-    <div class="tracking-card">
-      <h2 style="color: var(--maroon-deep); margin-bottom: 0.5rem;">📦 Live Order & Delivery Tracker</h2>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Enter your Order Tracking ID (e.g. RM-58219) to inspect real-time progress.</p>
-
-      <div class="tracking-search-bar">
-        <input type="text" id="trackIdInput" placeholder="e.g. RM-58219">
-        <button class="btn-track" id="trackOrderBtn">Check Status</button>
-      </div>
-
-      <div id="trackingResultContainer" style="display: none;"></div>
-    </div>
-  </section>
-
-  <section class="admin-section" id="adminSection">
-    <div class="admin-card">
-     <div class="admin-top-bar">
-     <h3>👥 Registered Customer Database</h3>
-     <div style="display: flex; gap: 1rem; align-items: center;">
-       <span style="color: var(--gold-hover); font-weight: bold;">[Total Accounts: <span id="custCount">0</span>]</span>
-       <button id="exportCsvBtn" type="button" style="background: var(--whatsapp-green); color: #fff; border: none; padding: 0.45rem 0.9rem; border-radius: 6px; font-weight: 700; cursor: pointer; font-size: 0.85rem;">
-         📥 Download Customer Excel (CSV)
-       </button>
-     </div>
-   </div>
-
-      <div class="table-container">
-        <table class="customer-table">
-          <thead>
-            <tr>
-              <th>Customer</th>
-              <th>Phone</th>
-              <th>Status</th>
-              <th>Joined Date</th>
-              <th>Flag Controls</th>
-            </tr>
-          </thead>
-          <tbody id="customerTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="admin-card">
-      <div class="admin-top-bar">
-        <h3>🚚 Dispatch & Delivery Stage Management</h3>
-      </div>
-      <div class="table-container">
-        <table class="customer-table">
-          <thead>
-            <tr>
-              <th>Tracking ID</th>
-              <th>Customer</th>
-              <th>Sarees</th>
-              <th>Total Bill</th>
-              <th>Update Delivery Status</th>
-            </tr>
-          </thead>
-          <tbody id="adminOrdersTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="admin-card">
-      <div class="admin-top-bar">
-        <h3>🛠️ Upload Saree to Cloud Database</h3>
-      </div>
-
-      <form id="newSareeForm" class="auth-form-panel">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Saree Title</label>
-            <input type="text" id="newName" placeholder="e.g. Royal Peacock Paithani" required>
-          </div>
-          <div class="form-group">
-            <label>Fabric Category</label>
-            <select id="newCategory">
-              <option value="Paithani">Paithani</option>
-              <option value="Banarasi">Banarasi</option>
-              <option value="Kanjivaram">Kanjivaram</option>
-              <option value="Chanderi">Chanderi</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Original Cut Price (₹)</label>
-            <input type="number" id="newOriginalPrice" placeholder="e.g. 11999" required min="1">
-          </div>
-          <div class="form-group">
-            <label>Discounted Selling Price (₹)</label>
-            <input type="number" id="newPrice" placeholder="e.g. 8499" required min="1">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label>Trust Badge Label</label>
-            <select id="newTrustBadge">
-              <option value="Silk Mark Certified">Silk Mark Certified</option>
-              <option value="100% Pure Mulberry Silk">100% Pure Mulberry Silk</option>
-              <option value="Handcrafted Zari">Handcrafted Zari</option>
-              <option value="Handloom Authenticated">Handloom Authenticated</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Upload Image File or URL</label>
-            <input type="file" id="sareeFileInput" accept="image/*">
-            <input type="text" id="newImageUrl" placeholder="Or paste web image link" style="margin-top: 0.3rem;">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Description & Zari Details</label>
-          <textarea id="newDesc" rows="2" placeholder="Pure silk fabric with traditional zari border." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-checkout" style="background: var(--maroon-deep);">+ Save & Sync Saree</button>
-      </form>
-    </div>
-  </section>
-
-  <div class="lightbox-modal" id="lightboxModal">
-    <button class="lightbox-close" id="lightboxCloseBtn">&times;</button>
-    <div class="lightbox-content">
-      <img id="lightboxImg" src="" alt="Zoomed Saree View">
-    </div>
-  </div>
-
-  <div class="drawer-overlay" id="drawerOverlay"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-drawer-header">
-      <h3>Shopping Bag (<span id="drawerBadge">0</span>)</h3>
-      <button class="close-btn" id="cartCloseBtn">&times;</button>
-    </div>
-    <div class="cart-items" id="cartItemsList"></div>
-    <div class="cart-drawer-footer">
-      <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem;">
-        <span>Total Payable:</span>
-        <span id="cartTotalPrice">₹0</span>
-      </div>
-      <button class="btn-checkout" id="openCheckoutModalBtn">Proceed to Order →</button>
-    </div>
-  </aside>
-
-  <div class="modal-overlay" id="checkoutModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>📍 Enter Delivery Details</h3>
-        <button class="close-btn" id="modalCloseBtn">&times;</button>
-      </div>
-      <form id="addressForm" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="custName" placeholder="e.g. Ramesh Patil" required>
-        </div>
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="tel" id="custPhone" placeholder="e.g. 9876543210" required>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>City / District *</label>
-            <input type="text" id="custCity" placeholder="e.g. Pune" required>
-          </div>
-          <div class="form-group">
-            <label>Pincode *</label>
-            <input type="text" id="custPincode" placeholder="e.g. 411001" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Full Street Address *</label>
-          <textarea id="custAddress" rows="3" placeholder="Flat No., Landmark, Area" required></textarea>
-        </div>
-
-        <button type="submit" class="btn-whatsapp-order">
-          📲 Send Order & Track Delivery
-        </button>
+  <!-- Account Sign In Modal -->
+  <div id="accountModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>ACCOUNT SIGN IN</h2>
+      <p>Enter your details to save your delivery address for faster checkout.</p>
+      <form id="loginForm">
+        <input type="text" id="custName" placeholder="Full Name" required>
+        <input type="tel" id="custPhone" placeholder="WhatsApp Number (10 digits)" pattern="[0-9]{10}" required>
+        <input type="password" id="custPin" placeholder="Security PIN (4 digits)" maxlength="4" required>
+        <textarea id="custAddress" placeholder="Delivery Address & Pincode" required></textarea>
+        <button type="submit" class="btn-primary">SIGN IN / REGISTER</button>
       </form>
     </div>
   </div>
 
-  <div class="modal-overlay" id="authModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3>Account Portal</h3>
-        <button class="close-btn" id="authModalCloseBtn">&times;</button>
-      </div>
-
-      <div class="auth-tabs">
-        <button class="auth-tab-btn active" id="tabLoginBtn">Sign In</button>
-        <button class="auth-tab-btn" id="tabRegisterBtn">Register</button>
-      </div>
-
-      <form id="loginForm" class="auth-form-panel">
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="loginPhone" placeholder="e.g. 9876543210" required>
-        </div>
-        <div class="form-group">
-          <label>Password (or Admin Code)</label>
-          <input type="password" id="loginPassword" placeholder="Enter password" required>
-        </div>
-        <button type="submit" class="btn-checkout" style="background: var(--maroon-deep);">Log In</button>
-      </form>
-
-      <form id="registerForm" class="auth-form-panel" style="display: none;">
-        <div class="form-group">
-          <label>Full Name</label>
-          <input type="text" id="regName" placeholder="e.g. Ramesh Patil" required>
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" id="regPhone" placeholder="e.g. 9876543210" required>
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" id="regPassword" placeholder="Create password" required>
-        </div>
-        <button type="submit" class="btn-checkout" style="background: var(--maroon-deep);">Register</button>
-      </form>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <p>&copy; 2026 Rajmata Sarees. Direct Orders & Inquiries: <strong>9322575059</strong></p>
-  </footer>
-
-  <script src="script.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
